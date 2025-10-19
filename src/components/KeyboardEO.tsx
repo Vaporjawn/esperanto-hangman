@@ -1,13 +1,7 @@
 import { memo } from 'react';
 import { Button, Stack, Box } from '@mui/material';
 import { useGame } from '../store/game';
-
-// Organize keyboard into 3 rows for better layout
-const KEYBOARD_ROWS = [
-  ['a', 'b', 'c', 'ĉ', 'd', 'e', 'f', 'g', 'ĝ', 'h'],
-  ['ĥ', 'i', 'j', 'ĵ', 'k', 'l', 'm', 'n', 'o', 'p'],
-  ['r', 's', 'ŝ', 't', 'u', 'ŭ', 'v', 'z'],
-];
+import { KEYBOARD_ROWS } from '../constants/game';
 
 interface KeyButtonProps {
   letter: string;

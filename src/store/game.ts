@@ -1,63 +1,12 @@
 import { create } from 'zustand';
-import wordsData from '../data/words-eo.json';
-import { toNFC, uniqueLetters } from '../utils/eo';
+import { toNFC, isWordComplete } from '../utils/eo';
+import { loadStats, saveStats, loadSettings } from '../services/storage';
+import { pickRandomWord } from '../services/words';
 import type { GamePhase, GameStats } from '../types';
 
-// Fallback words if JSON fails to load
-const FALLBACK_WORDS = [
-  'hundo',
-  'kato',
-  'domo',
-  'libro',
-  'akvo',
-  'pano',
-  'sunos',
-  'nokto',
-  'amiko',
-  'varma',
-];
-
-const words: string[] = Array.isArray(wordsData) && wordsData.length > 0 ? wordsData : FALLBACK_WORDS;
-
-// LocalStorage keys
-const STATS_KEY = 'ehm-stats';
-const SETTINGS_KEY = 'ehm-settings';
-
-// Load stats from localStorage
-const loadStats = (): GameStats => {
-  try {
-    const stored = localStorage.getItem(STATS_KEY);
-    if (stored) {
-      return JSON.parse(stored);
-    }
-  } catch (e) {
-    console.error('Failed to load stats:', e);
-  }
-  return { games: 0, wins: 0, streak: 0 };
-};
-
-// Save stats to localStorage
-const saveStats = (stats: GameStats): void => {
-  try {
-    localStorage.setItem(STATS_KEY, JSON.stringify(stats));
-  } catch (e) {
-    console.error('Failed to save stats:', e);
-  }
-};
-
-// Load settings from localStorage
-const loadSettings = () => {
-  try {
-    const stored = localStorage.getItem(SETTINGS_KEY);
-    if (stored) {
-      return JSON.parse(stored);
-    }
-  } catch (e) {
-    console.error('Failed to load settings:', e);
-  }
-  return { maxMistakes: 6, allowHints: false };
-};
-
+/**
+ * Game state interface
+ */
 interface GameState {
   secret: string;
   guessed: Set<string>;
@@ -71,11 +20,47 @@ interface GameState {
   guess: (letter: string) => void;
 }
 
-const pickRandomWord = (): string => {
-  const word = words[Math.floor(Math.random() * words.length)];
-  return toNFC(word);
+/**
+ * Update game stats after win
+ */
+const updateStatsForWin = (currentStats: GameStats): GameStats => ({
+  games: currentStats.games + 1,
+  wins: currentStats.wins + 1,
+  streak: currentStats.streak + 1,
+});
+
+/**
+ * Update game stats after loss
+ */
+const updateStatsForLoss = (currentStats: GameStats): GameStats => ({
+  games: currentStats.games + 1,
+  wins: currentStats.wins,
+  streak: 0,
+});
+
+/**
+ * Determine the new game phase based on guessed letters and wrong count
+ */
+const determineGamePhase = (
+  secret: string,
+  guessedLetters: Set<string>,
+  wrongCount: number,
+  maxMistakes: number
+): GamePhase => {
+  if (isWordComplete(secret, guessedLetters)) {
+    return 'won';
+  }
+
+  if (wrongCount >= maxMistakes) {
+    return 'lost';
+  }
+
+  return 'playing';
 };
 
+/**
+ * Main game store using Zustand
+ */
 export const useGame = create<GameState>((set, get) => {
   const settings = loadSettings();
 
@@ -114,29 +99,21 @@ export const useGame = create<GameState>((set, get) => {
         nextWrong.add(letter);
       }
 
-      // Determine new phase
-      let nextPhase: GamePhase = 'playing';
-      const secretLetters = uniqueLetters(secret);
-      const allGuessed = [...secretLetters].every(l => nextGuessed.has(l));
+      // Determine new phase using helper function
+      const nextPhase = determineGamePhase(
+        secret,
+        nextGuessed,
+        nextWrong.size,
+        maxMistakes
+      );
 
-      if (allGuessed) {
-        nextPhase = 'won';
-        // Update stats for win
-        const newStats: GameStats = {
-          games: stats.games + 1,
-          wins: stats.wins + 1,
-          streak: stats.streak + 1,
-        };
+      // Update stats if game ended
+      if (nextPhase === 'won') {
+        const newStats = updateStatsForWin(stats);
         saveStats(newStats);
         set({ stats: newStats });
-      } else if (nextWrong.size >= maxMistakes) {
-        nextPhase = 'lost';
-        // Update stats for loss
-        const newStats: GameStats = {
-          games: stats.games + 1,
-          wins: stats.wins,
-          streak: 0,
-        };
+      } else if (nextPhase === 'lost') {
+        const newStats = updateStatsForLoss(stats);
         saveStats(newStats);
         set({ stats: newStats });
       }

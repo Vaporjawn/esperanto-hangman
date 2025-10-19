@@ -1,5 +1,6 @@
 import { memo } from 'react';
 import { Box } from '@mui/material';
+import { HANGMAN_SVG } from '../constants/game';
 
 interface HangmanFigureProps {
   mistakeCount: number;
@@ -12,13 +13,18 @@ const HangmanFigure = ({ mistakeCount }: HangmanFigureProps) => {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        minHeight: 300,
+        minHeight: HANGMAN_SVG.MIN_HEIGHT,
         userSelect: 'none',
       }}
       role="img"
       aria-label={`Pendumulo kun ${mistakeCount} eraroj`}
     >
-      <svg width="200" height="250" viewBox="0 0 200 250" aria-hidden="true">
+      <svg
+        width={HANGMAN_SVG.WIDTH}
+        height={HANGMAN_SVG.HEIGHT}
+        viewBox={`0 0 ${HANGMAN_SVG.WIDTH} ${HANGMAN_SVG.HEIGHT}`}
+        aria-hidden="true"
+      >
         {/* Gallows base */}
         <line x1="10" y1="230" x2="150" y2="230" stroke="#333" strokeWidth="4" />
         {/* Gallows vertical pole */}
