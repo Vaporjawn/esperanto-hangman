@@ -145,10 +145,10 @@ Create a descriptive branch name:
    ```bash
    # Run linter
    npm run lint
-   
+
    # Build production version
    npm run build
-   
+
    # Preview production build
    npm run preview
    ```
@@ -227,10 +227,10 @@ interface ButtonProps {
   children: React.ReactNode;
 }
 
-export const Button: React.FC<ButtonProps> = ({ 
-  onClick, 
-  disabled = false, 
-  children 
+export const Button: React.FC<ButtonProps> = ({
+  onClick,
+  disabled = false,
+  children
 }) => {
   return (
     <button onClick={onClick} disabled={disabled}>

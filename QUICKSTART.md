@@ -123,11 +123,11 @@ esperanto-hangman/
 ### Manual Testing Checklist
 
 1. **Start the game**: Click "Nova ludo" (New Game)
-2. **Test keyboard input**: 
+2. **Test keyboard input**:
    - Type regular letters: a, b, c
    - Type x-notation: cx → ĉ, gx → ĝ, hx → ĥ, jx → ĵ, sx → ŝ, ux → ŭ
 3. **Test mouse input**: Click letter buttons
-4. **Test game completion**: 
+4. **Test game completion**:
    - Win a game (guess all letters)
    - Lose a game (6 wrong guesses)
 5. **Test statistics**: Check that stats update correctly

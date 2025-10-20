@@ -18,15 +18,15 @@ assignees: ''
 ## ✅ Acceptance Criteria
 <!-- What conditions must be met for this to be complete -->
 
-- [ ] 
-- [ ] 
-- [ ] 
+- [ ]
+- [ ]
+- [ ]
 
 ## 📚 Resources
 <!-- Links to relevant documentation or examples -->
 
-- 
-- 
+-
+-
 
 ## 🤝 Getting Started
 
