@@ -8,6 +8,10 @@
 
 A modern, accessible hangman game built specifically for the Esperanto language, featuring all 28 Esperanto letters including the special diacritics (ĉ, ĝ, ĥ, ĵ, ŝ, ŭ).
 
+<img width="855" height="792" alt="Screenshot 2025-10-19 at 11 58 34" src="https://github.com/user-attachments/assets/a1aa3903-04b9-496a-b98b-a86667b933d0" />
+<img width="859" height="840" alt="Screenshot 2025-10-19 at 11 58 55" src="https://github.com/user-attachments/assets/0fd094dd-9bad-46ba-9b3a-d0d329a67107" />
+
+
 ## 🎮 Play Now
 
 - **GitHub Pages**: [https://vaporjawn.github.io/esperanto-hangman/](https://vaporjawn.github.io/esperanto-hangman/)
