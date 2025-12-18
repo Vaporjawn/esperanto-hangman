@@ -1,16 +1,9 @@
-import { useState, useEffect, createContext, useContext } from 'react';
+import { useState, useEffect } from 'react';
 import type { PaletteMode } from '@mui/material';
 import type { ReactNode } from 'react';
+import { ThemeModeContext } from '../contexts/ThemeModeContext';
 
 const THEME_STORAGE_KEY = 'esperanto-hangman-theme';
-
-interface ThemeModeContextType {
-  mode: PaletteMode;
-  toggleTheme: () => void;
-  setThemeMode: (mode: PaletteMode) => void;
-}
-
-const ThemeModeContext = createContext<ThemeModeContextType | null>(null);
 
 /**
  * Provider component for theme mode context
@@ -46,16 +39,4 @@ export const ThemeModeProvider = ({ children }: { children: ReactNode }) => {
       {children}
     </ThemeModeContext.Provider>
   );
-};
-
-/**
- * Custom hook for accessing theme mode context
- * Must be used within ThemeModeProvider
- */
-export const useThemeMode = () => {
-  const context = useContext(ThemeModeContext);
-  if (!context) {
-    throw new Error('useThemeMode must be used within ThemeModeProvider');
-  }
-  return context;
 };

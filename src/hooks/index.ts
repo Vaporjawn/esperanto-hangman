@@ -3,4 +3,4 @@
  */
 
 export { useKeyboardInput } from './useKeyboardInput';
-export { useThemeMode, ThemeModeProvider } from './useThemeMode';
+export { useThemeMode } from '../contexts/ThemeModeContext';
