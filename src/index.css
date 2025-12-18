@@ -7,7 +7,13 @@
 
 body {
   margin: 0;
-  font-family: 'Roboto', 'Noto Sans', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family:
+    'Roboto',
+    'Noto Sans',
+    'Segoe UI',
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -22,4 +28,3 @@ html {
   outline: 3px solid #2e7d32;
   outline-offset: 2px;
 }
-
