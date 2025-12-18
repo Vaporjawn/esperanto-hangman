@@ -7,9 +7,7 @@ import { FALLBACK_WORDS } from '../constants/game';
  * @returns Array of normalized Esperanto words
  */
 const loadWords = (): string[] => {
-  const words = Array.isArray(wordsData) && wordsData.length > 0
-    ? wordsData
-    : [...FALLBACK_WORDS];
+  const words = Array.isArray(wordsData) && wordsData.length > 0 ? wordsData : [...FALLBACK_WORDS];
 
   // Normalize all words to NFC form for consistent diacritic handling
   return words.map(word => toNFC(word));

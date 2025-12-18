@@ -40,19 +40,29 @@ const HangmanFigure = ({ mistakeCount }: HangmanFigureProps) => {
         )}
 
         {/* Body - shows at 2 mistakes */}
-        {mistakeCount >= 2 && <line x1="130" y1="90" x2="130" y2="150" stroke="#333" strokeWidth="3" />}
+        {mistakeCount >= 2 && (
+          <line x1="130" y1="90" x2="130" y2="150" stroke="#333" strokeWidth="3" />
+        )}
 
         {/* Left arm - shows at 3 mistakes */}
-        {mistakeCount >= 3 && <line x1="130" y1="110" x2="100" y2="130" stroke="#333" strokeWidth="3" />}
+        {mistakeCount >= 3 && (
+          <line x1="130" y1="110" x2="100" y2="130" stroke="#333" strokeWidth="3" />
+        )}
 
         {/* Right arm - shows at 4 mistakes */}
-        {mistakeCount >= 4 && <line x1="130" y1="110" x2="160" y2="130" stroke="#333" strokeWidth="3" />}
+        {mistakeCount >= 4 && (
+          <line x1="130" y1="110" x2="160" y2="130" stroke="#333" strokeWidth="3" />
+        )}
 
         {/* Left leg - shows at 5 mistakes */}
-        {mistakeCount >= 5 && <line x1="130" y1="150" x2="110" y2="190" stroke="#333" strokeWidth="3" />}
+        {mistakeCount >= 5 && (
+          <line x1="130" y1="150" x2="110" y2="190" stroke="#333" strokeWidth="3" />
+        )}
 
         {/* Right leg - shows at 6 mistakes (game over) */}
-        {mistakeCount >= 6 && <line x1="130" y1="150" x2="150" y2="190" stroke="#333" strokeWidth="3" />}
+        {mistakeCount >= 6 && (
+          <line x1="130" y1="150" x2="150" y2="190" stroke="#333" strokeWidth="3" />
+        )}
       </svg>
     </Box>
   );

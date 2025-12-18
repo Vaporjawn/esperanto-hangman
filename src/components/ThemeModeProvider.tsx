@@ -27,7 +27,7 @@ export const ThemeModeProvider = ({ children }: { children: ReactNode }) => {
   }, [mode]);
 
   const toggleTheme = () => {
-    setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
+    setMode(prevMode => (prevMode === 'light' ? 'dark' : 'light'));
   };
 
   const setThemeMode = (newMode: PaletteMode) => {
