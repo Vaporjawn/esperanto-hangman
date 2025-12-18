@@ -1,12 +1,5 @@
 import { Stack } from '@mui/material';
-import {
-  AppShell,
-  HangmanFigure,
-  WordSlots,
-  KeyboardEO,
-  StatusBar,
-  Controls,
-} from '../components';
+import { AppShell, HangmanFigure, WordSlots, KeyboardEO, StatusBar, Controls } from '../components';
 import { useGame } from '../store/game';
 
 const GamePage = () => {

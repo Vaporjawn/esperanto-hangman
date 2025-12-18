@@ -75,12 +75,8 @@ const WordSlots = () => {
       role="region"
       aria-label="Vorto divenenda"
     >
-      {slots.map((slot) => (
-        <LetterSlot
-          key={slot.id}
-          letter={slot.letter}
-          isError={slot.isError}
-        />
+      {slots.map(slot => (
+        <LetterSlot key={slot.id} letter={slot.letter} isError={slot.isError} />
       ))}
     </Box>
   );

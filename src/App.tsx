@@ -3,7 +3,8 @@ import { useMemo } from 'react';
 import { getTheme } from './config/theme';
 import GamePage from './pages/GamePage';
 import { useGame } from './store/game';
-import { useKeyboardInput, ThemeModeProvider, useThemeMode } from './hooks';
+import { useKeyboardInput, useThemeMode } from './hooks';
+import { ThemeModeProvider } from './components';
 
 function AppContent() {
   const guess = useGame(state => state.guess);
@@ -33,4 +34,3 @@ function App() {
 }
 
 export default App;
-
