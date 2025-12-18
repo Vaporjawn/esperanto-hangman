@@ -9,3 +9,4 @@ export { default as HangmanFigure } from './HangmanFigure';
 export { default as KeyboardEO } from './KeyboardEO';
 export { default as StatusBar } from './StatusBar';
 export { default as WordSlots } from './WordSlots';
+export { ThemeModeProvider } from './ThemeModeProvider';

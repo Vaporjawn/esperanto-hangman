@@ -10,7 +10,13 @@ const Controls = () => {
 
   return (
     <Box sx={{ my: 3 }}>
-      <Stack direction="row" spacing={2} justifyContent="center" alignItems="center" flexWrap="wrap">
+      <Stack
+        direction="row"
+        spacing={2}
+        justifyContent="center"
+        alignItems="center"
+        flexWrap="wrap"
+      >
         <Button
           variant="contained"
           color="primary"

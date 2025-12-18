@@ -7,10 +7,7 @@ import { fromXNotation } from '../utils/eo';
  * @param onGuess - Callback function to handle letter guesses
  * @param enabled - Whether keyboard input is enabled
  */
-export const useKeyboardInput = (
-  onGuess: (letter: string) => void,
-  enabled = true
-): void => {
+export const useKeyboardInput = (onGuess: (letter: string) => void, enabled = true): void => {
   const prevKeyRef = useRef<string | null>(null);
 
   useEffect(() => {

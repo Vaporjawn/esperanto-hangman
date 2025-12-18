@@ -127,4 +127,3 @@ export const isWordComplete = (word: string, guessedLetters: Set<string>): boole
   const wordLetters = uniqueLetters(word);
   return [...wordLetters].every(letter => guessedLetters.has(letter));
 };
-

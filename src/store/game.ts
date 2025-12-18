@@ -100,12 +100,7 @@ export const useGame = create<GameState>((set, get) => {
       }
 
       // Determine new phase using helper function
-      const nextPhase = determineGamePhase(
-        secret,
-        nextGuessed,
-        nextWrong.size,
-        maxMistakes
-      );
+      const nextPhase = determineGamePhase(secret, nextGuessed, nextWrong.size, maxMistakes);
 
       // Update stats if game ended
       if (nextPhase === 'won') {
