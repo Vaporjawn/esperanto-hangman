@@ -13,9 +13,7 @@ const Controls = () => {
       <Stack
         direction="row"
         spacing={2}
-        justifyContent="center"
-        alignItems="center"
-        flexWrap="wrap"
+        sx={{ justifyContent: 'center', alignItems: 'center', flexWrap: 'wrap' }}
       >
         <Button
           variant="contained"
